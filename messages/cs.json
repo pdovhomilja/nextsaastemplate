@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "DigInvoice.APP",
-    "description": ""
+    "title": "Next SaaS Template",
+    "description": "Next.js SaaS Template with TypeScript, Tailwind CSS, Next-Intl, Prisma, ShadCnUI, Postgress, Auth.js, and more."
   },
   "Index": {
     "title": "Ahoj světe!"
