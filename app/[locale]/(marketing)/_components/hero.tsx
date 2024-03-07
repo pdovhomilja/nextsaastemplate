@@ -105,13 +105,22 @@ export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
       <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
-        The Ultimate <br /> development studio
+        The Next.JS
+        <br /> SaaS Starter
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        We build beautiful products with the latest technologies and frameworks.
-        We are a team of passionate developers and designers that love to build
-        amazing products.
+        A modern Next.js starter with a minimalistic UI. Full Auth with
+        credentials and Socials. Light/Dark mode. It comes with a pre-configured
+        TailwindCSS and TypeScript setup.
       </p>
+      <div className="mt-8">
+        TechStack:
+        <span className="text-lg md:text-xl font-bold dark:text-white">
+          Next.js 14, Next-Int, TailwindCSS, TypeScript, ShadCN UI,
+          AceternityUI, Prisma, PostgreSQL, Resend, Auth.js
+        </span>
+        <br />
+      </div>
     </div>
   );
 };

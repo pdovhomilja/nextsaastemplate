@@ -1,5 +1,6 @@
 import { SignOut } from "@/components/auth-components";
 import LocaleSwitcher from "@/components/locale-switcher";
+import { LoginButton } from "@/components/login-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -27,15 +28,19 @@ const Top = async () => {
         </div>
         <div className="flex gap-3 items-center">
           <LocaleSwitcher />
-          <Button asChild>
+          <LoginButton
+            asChild
+            borderRadius="0.55rem"
+            className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+          >
             <Link
               href={{
                 pathname: "/sign-in",
               }}
             >
-              Sign In
+              Sign In{" "}
             </Link>
-          </Button>
+          </LoginButton>
           <ThemeToggle />
         </div>
       </div>
