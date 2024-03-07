@@ -1,0 +1,17 @@
+{
+  "Metadata": {
+    "title": "DigInvoice.APP",
+    "description": ""
+  },
+  "Index": {
+    "title": "Ahoj světe!"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, cs {Czech} en {English} other {Unknown}}"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "description": "Vítejte v aplikaci DigInvoice.APP"
+  }
+}
