@@ -2,8 +2,10 @@ import Footer from "@/components/footer";
 import Navbar from "./_components/navbar";
 import Sidebar from "./_components/sidebar";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { auth } from "@/lib/auth/auth";
+import { redirect } from "@/navigation";
 
-const AppLayout = ({
+const AppLayout = async ({
   children,
   params: { locale },
 }: {
@@ -11,6 +13,12 @@ const AppLayout = ({
   params: { locale: string };
 }) => {
   unstable_setRequestLocale(locale);
+
+  const session = await auth();
+  if (!session) {
+    return redirect("/login");
+  }
+
   return (
     <div className="flex flex-col w-full h-screen">
       <Navbar />

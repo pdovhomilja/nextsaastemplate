@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { auth } from "@/lib/auth/auth";
-import { prisma } from "@/lib/db/prisma";
+import { db } from "@/lib/db";
 import { Link } from "@/navigation";
 
 import React from "react";
@@ -35,7 +35,7 @@ const Top = async () => {
           >
             <Link
               href={{
-                pathname: "/sign-in",
+                pathname: "/login",
               }}
             >
               Sign In{" "}
@@ -47,7 +47,7 @@ const Top = async () => {
     );
   }
 
-  const user = await prisma.user.findUnique({
+  const user = await db.user.findUnique({
     where: {
       id: session?.user?.id,
     },

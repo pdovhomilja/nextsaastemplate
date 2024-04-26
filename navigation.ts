@@ -11,8 +11,9 @@ export const localePrefix = "always"; // Default
 export const pathnames = {
   "/": "/",
   "/blog": "/blog",
-  "/sign-in": "/sign-in",
-  "/sign-up": "/sign-up",
+  "/login": "/login",
+  "/register": "/register",
+  "/auth/reset": "/auth/reset",
   "/[accountId]/dashboard": "/[accountId]/dashboard",
   "/[sessionId]/dashboard": "/[sessionId]/dashboard",
 } satisfies Pathnames<typeof locales>;

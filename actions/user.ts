@@ -1,7 +1,7 @@
-import { prisma } from "@/lib/db/prisma";
+import { db } from "@/lib/db/";
 
 export async function getUserById(userId: string) {
-  const user = await prisma.user.findUnique({
+  const user = await db.user.findUnique({
     where: {
       id: userId,
     },
@@ -10,7 +10,7 @@ export async function getUserById(userId: string) {
 }
 
 export async function getUserByEmail(email: string) {
-  const user = await prisma.user.findUnique({
+  const user = await db.user.findUnique({
     where: {
       email,
     },
