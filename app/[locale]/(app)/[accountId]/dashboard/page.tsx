@@ -1,4 +1,4 @@
-import { getUserById } from "@/actions/user";
+import { getUserByEmail, getUserById } from "@/actions/user";
 import { auth } from "@/lib/auth/auth";
 import { redirect } from "@/navigation";
 
@@ -13,7 +13,11 @@ const DashboardPage = async ({
 
   const session = await auth();
 
-  const user = await getUserById(session?.user?.id!);
+  if (!session) {
+    redirect("/login");
+  }
+
+  const user = await getUserByEmail(session?.user?.email!);
 
   if (accountId !== user?.companyId) {
     return <div>You are trying to reach others workspace!</div>;

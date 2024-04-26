@@ -1,3 +1,4 @@
+import { getUserByEmail } from "@/actions/user";
 import { SignOut } from "@/components/auth-components";
 import LocaleSwitcher from "@/components/locale-switcher";
 import { LoginButton } from "@/components/login-button";
@@ -47,11 +48,7 @@ const Top = async () => {
     );
   }
 
-  const user = await db.user.findUnique({
-    where: {
-      id: session?.user?.id,
-    },
-  });
+  const user = await getUserByEmail(session.user?.email!);
 
   return (
     <div className="flex justify-between items-center p-5">
