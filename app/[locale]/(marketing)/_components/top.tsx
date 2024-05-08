@@ -1,5 +1,6 @@
 import { getUserByEmail } from "@/actions/user";
 import { SignOut } from "@/components/auth-components";
+import ShinyButton from "@/components/buttons/shiny-button";
 import LocaleSwitcher from "@/components/locale-switcher";
 import { LoginButton } from "@/components/login-button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -32,16 +33,17 @@ const Top = async () => {
           <LoginButton
             asChild
             borderRadius="0.55rem"
-            className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+            className="bg-white dark:bg-black text-black dark:text-white border-neutral-200 dark:border-black"
           >
             <Link
               href={{
                 pathname: "/login",
               }}
             >
-              Sign In{" "}
+              Sign In
             </Link>
           </LoginButton>
+          {/*           <ShinyButton title="Sign in" pathname="/login" /> */}
           <ThemeToggle />
         </div>
       </div>
