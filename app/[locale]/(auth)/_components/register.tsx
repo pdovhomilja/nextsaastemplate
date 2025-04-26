@@ -2,7 +2,7 @@ import { SignInButton } from "@/components/auth-components";
 
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import RegisterFrom from "./register-form";
-import { Link } from "@/navigation";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 
 export function SignupFormDemo() {

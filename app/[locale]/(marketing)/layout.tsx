@@ -1,15 +1,11 @@
 import React from "react";
 import Top from "./_components/top";
-import { unstable_setRequestLocale } from "next-intl/server";
 
-const MarketingLayout = ({
+export default async function MarketingLayout({
   children,
-  params: { locale },
 }: {
   children: React.ReactNode;
-  params: { locale: string };
-}) => {
-  unstable_setRequestLocale(locale);
+}) {
   return (
     <div className="flex flex-col w-full h-full">
       <Top />
@@ -18,6 +14,4 @@ const MarketingLayout = ({
       </div>
     </div>
   );
-};
-
-export default MarketingLayout;
+}

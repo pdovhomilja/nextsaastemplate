@@ -1,10 +1,12 @@
-import React from "react";
+import React, { use } from "react";
 import { SignupFormDemo } from "../_components/register";
-import { unstable_setRequestLocale } from "next-intl/server";
+
 import { useTranslations } from "next-intl";
 
-const SignUpForm = ({ params: { locale } }: { params: { locale: string } }) => {
-  unstable_setRequestLocale(locale);
+const SignUpForm = (props: { params: Promise<{ locale: string }> }) => {
+  const params = use(props.params);
+
+  const { locale } = params;
 
   const t = useTranslations("Index");
   return <SignupFormDemo />;

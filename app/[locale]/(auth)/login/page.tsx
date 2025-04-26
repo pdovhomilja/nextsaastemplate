@@ -1,13 +1,18 @@
 import { auth } from "@/lib/auth/auth";
 
 import { SignInForm } from "../_components/login";
-import { redirect } from "next/navigation";
+import { redirect } from "@/i18n/navigation";
 
-const SignInPage = async () => {
+const SignInPage = async ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) => {
   const session = await auth();
+  const { locale } = await params;
 
   if (session) {
-    return redirect("/");
+    redirect({ href: "/", locale: locale });
   }
 
   return (

@@ -1,22 +1,24 @@
 import Footer from "@/components/footer";
 import Navbar from "./_components/navbar";
 import Sidebar from "./_components/sidebar";
-import { unstable_setRequestLocale } from "next-intl/server";
-import { auth } from "@/lib/auth/auth";
-import { redirect } from "@/navigation";
 
-const AppLayout = async ({
-  children,
-  params: { locale },
-}: {
+import { auth } from "@/lib/auth/auth";
+import { redirect } from "@/i18n/navigation";
+
+const AppLayout = async (props: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) => {
-  unstable_setRequestLocale(locale);
+  const params = await props.params;
+
+  const { locale } = params;
+
+  const { children } = props;
 
   const session = await auth();
+
   if (!session) {
-    return redirect("/login");
+    redirect({ href: "/login", locale: params.locale });
   }
 
   return (

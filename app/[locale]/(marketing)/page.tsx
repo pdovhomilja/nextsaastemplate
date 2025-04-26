@@ -1,15 +1,8 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { HeroParallax } from "./_components/hero";
-import { unstable_setRequestLocale } from "next-intl/server";
 
-export default function Home({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  unstable_setRequestLocale(locale);
-
-  const t = useTranslations("Index");
+export default async function Home() {
+  const t = await getTranslations("Index");
 
   const products = [
     {
@@ -53,6 +46,7 @@ export default function Home({
       thumbnail: "/images/nextcrm-light.png",
     },
   ];
+
   return (
     <main>
       {t("title")}

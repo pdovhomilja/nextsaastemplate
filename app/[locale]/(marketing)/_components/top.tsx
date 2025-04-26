@@ -1,6 +1,6 @@
 import { getUserByEmail } from "@/actions/user";
 import { SignOut } from "@/components/auth-components";
-import ShinyButton from "@/components/buttons/shiny-button";
+
 import LocaleSwitcher from "@/components/locale-switcher";
 import { LoginButton } from "@/components/login-button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -14,8 +14,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { auth } from "@/lib/auth/auth";
-import { db } from "@/lib/db";
-import { Link } from "@/navigation";
+
+import { Link } from "@/i18n/navigation";
 
 import React from "react";
 
@@ -31,7 +31,6 @@ const Top = async () => {
         <div className="flex gap-3 items-center">
           <LocaleSwitcher />
           <LoginButton
-            asChild
             borderRadius="0.55rem"
             className="bg-white dark:bg-black text-black dark:text-white border-neutral-200 dark:border-black"
           >
@@ -62,8 +61,7 @@ const Top = async () => {
         <Button asChild>
           <Link
             href={{
-              pathname: `/[sessionId]/dashboard`,
-              params: { sessionId: user?.companyId! },
+              pathname: `/${user?.companyId}/dashboard`,
             }}
           >
             Dashboard

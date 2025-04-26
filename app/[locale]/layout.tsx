@@ -1,36 +1,26 @@
 import { Inter } from "next/font/google";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
-import { locales } from "@/navigation";
-import { ThemeProvider } from "@/providers/theme-provideer";
+import { ThemeProvider } from "@/providers/theme-provider";
+
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  unstable_setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "Metadata" });
-
-  return {
-    title: t("title"),
-    description: t("description"),
-  };
-}
-
-export default function RootLayout({
+export default async function LocaleLayout({
   children,
-  params: { locale },
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-  params: { locale: string };
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   return (
     <html lang={locale}>
       <body className={inter.className + "w-full h-screen"}>
@@ -40,7 +30,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

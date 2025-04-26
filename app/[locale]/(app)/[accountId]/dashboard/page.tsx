@@ -1,20 +1,22 @@
 import { getUserByEmail, getUserById } from "@/actions/user";
+import { redirect } from "@/i18n/navigation";
 import { auth } from "@/lib/auth/auth";
-import { redirect } from "@/navigation";
 
 import { getTranslations } from "next-intl/server";
 
-const DashboardPage = async ({
-  params: { accountId },
-}: {
-  params: { accountId: string };
+const DashboardPage = async (props: {
+  params: Promise<{ accountId: string; locale: string }>;
 }) => {
+  const params = await props.params;
+
+  const { accountId } = params;
+
   const t = await getTranslations("Dashboard");
 
   const session = await auth();
 
   if (!session) {
-    redirect("/login");
+    redirect({ href: "/login", locale: params.locale });
   }
 
   const user = await getUserByEmail(session?.user?.email!);

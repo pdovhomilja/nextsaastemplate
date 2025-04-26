@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "@/navigation";
+import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 
 const ShinyButton = ({ title, pathname }: { title: string; pathname: any }) => {

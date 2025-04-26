@@ -5,8 +5,10 @@ import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import { SignInButton } from "@/components/auth-components";
 
 import LoginForm from "./login-form";
-import { Link } from "@/navigation";
+
 import { Button } from "@/components/ui/button";
+
+import { Link } from "@/i18n/navigation";
 
 export function SignInForm() {
   return (

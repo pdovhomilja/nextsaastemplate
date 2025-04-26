@@ -1,10 +1,10 @@
-import { PHProvider } from '@/providers/posthog'
-import './globals.css'
+import { PHProvider } from "@/providers/posthog";
+import "./globals.css";
 
-export default function RootLayout({
-  children
+export default async function RootLayout({
+  children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-  return <PHProvider>{children}</PHProvider>
+  return <PHProvider>{children}</PHProvider>;
 }
