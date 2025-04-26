@@ -30,7 +30,7 @@ const DashboardPage = async ({
       Iam dashboard of user: {session?.user?.name}, userId: {session?.user?.id},
       params accountId: {accountId}
       <div>
-        User role: <pre>{JSON.stringify(user?.role[0], null, 2)}</pre>
+        User role: <pre>{JSON.stringify(user?.role, null, 2)}</pre>
       </div>
     </div>
   );
