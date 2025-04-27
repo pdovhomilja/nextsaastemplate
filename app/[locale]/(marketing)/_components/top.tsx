@@ -1,5 +1,4 @@
 import { getUserByEmail } from "@/actions/user";
-import { SignOut } from "@/components/auth-components";
 
 import LocaleSwitcher from "@/components/locale-switcher";
 import { LoginButton } from "@/components/login-button";
@@ -13,7 +12,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { auth } from "@/lib/auth/auth";
+import { auth, signOut } from "@/lib/auth/auth";
 
 import { Link } from "@/i18n/navigation";
 
@@ -93,8 +92,13 @@ const Top = async () => {
                 </p>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuItem>
-              <SignOut />
+            <DropdownMenuItem
+              onClick={async () => {
+                "use server";
+                await signOut();
+              }}
+            >
+              Sign out
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
