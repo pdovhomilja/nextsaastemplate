@@ -27,7 +27,7 @@ import {
 } from "./ui/dropdown-menu";
 import { auth, signOut } from "@/lib/auth/auth";
 import Image from "next/image";
-import { User } from "@/prisma/app/generated/prisma/client";
+import { User } from "@/prisma-client/app/generated/prisma/client";
 
 // Menu items.
 const items = (accountId: string) => [

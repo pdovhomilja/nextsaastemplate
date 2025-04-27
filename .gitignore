@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+#prisma
+/prisma-client
 # dependencies
 /node_modules
 /.pnp
@@ -30,8 +31,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-#prisma
-/prisma/app/generated/prisma/client/edge.js
 
 # typescript
 *.tsbuildinfo
