@@ -1,5 +1,6 @@
 import React from "react";
 import Top from "./_components/top";
+import Footer from "./_components/footer";
 
 export default async function MarketingLayout({
   children,
@@ -12,6 +13,7 @@ export default async function MarketingLayout({
       <div className="flex justify-center items-center mx-auto  w-[80vw]">
         {children}
       </div>
+      <Footer />
     </div>
   );
 }

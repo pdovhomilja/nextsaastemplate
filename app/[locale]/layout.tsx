@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
+import "../globals.css";
 
 import { ThemeProvider } from "@/providers/theme-provider";
+import { PHProvider } from "@/providers/posthog";
 
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
@@ -24,14 +26,16 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={inter.className + "w-full h-screen"}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
-        </ThemeProvider>
+        <PHProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          </ThemeProvider>
+        </PHProvider>
       </body>
     </html>
   );

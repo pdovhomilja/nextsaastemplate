@@ -1,40 +1,31 @@
-import Footer from "@/components/footer";
-import Navbar from "./_components/navbar";
-import Sidebar from "./_components/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 import { auth } from "@/lib/auth/auth";
 import { redirect } from "@/i18n/navigation";
 
-const AppLayout = async (props: {
+const AppLayout = async ({
+  children,
+  params,
+}: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) => {
-  const params = await props.params;
-
-  const { locale } = params;
-
-  const { children } = props;
-
+  const { locale } = await params;
   const session = await auth();
 
   if (!session) {
-    redirect({ href: "/login", locale: params.locale });
+    redirect({ href: "/login", locale: locale });
   }
 
   return (
-    <div className="flex flex-col w-full h-screen">
-      <Navbar />
-
-      <div className="flex  h-full">
-        <div className="flex border-r h-full justify-center px-5">
-          <Sidebar />
-        </div>
-        <div className="flex h-full w-full px-5 flex-col">
-          <div className="grow"> {children} </div>
-          <Footer />
-        </div>
-      </div>
-    </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <main>
+        <SidebarTrigger />
+        <div className="flex flex-col w-full p-4">{children}</div>
+      </main>
+    </SidebarProvider>
   );
 };
 

@@ -116,7 +116,7 @@ export const Header = () => {
       <div className="mt-8">
         TechStack:
         <span className="text-lg md:text-xl font-bold dark:text-white">
-          Next.js 14, Next-Int, TailwindCSS, TypeScript, ShadCN UI,
+          Next.js 15, Next-Int, TailwindCSS, TypeScript, ShadCN UI,
           AceternityUI, Prisma, PostgreSQL, Resend, Auth.js
         </span>
         <br />
