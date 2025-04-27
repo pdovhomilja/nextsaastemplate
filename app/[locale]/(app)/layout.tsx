@@ -3,6 +3,8 @@ import { AppSidebar } from "@/components/app-sidebar";
 
 import { auth } from "@/lib/auth/auth";
 import { redirect } from "@/i18n/navigation";
+import { db } from "@/lib/db";
+import { getUserByEmail } from "@/actions/user";
 
 const AppLayout = async ({
   children,
@@ -18,9 +20,13 @@ const AppLayout = async ({
     redirect({ href: "/login", locale: locale });
   }
 
+  const user = await getUserByEmail(session?.user?.email!);
+
+  console.log("AccountId", user?.companyId);
+
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar user={user!} />
       <main>
         <SidebarTrigger />
         <div className="flex flex-col w-full p-4">{children}</div>

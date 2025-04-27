@@ -25,42 +25,30 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { auth } from "@/lib/auth/auth";
+import { auth, signOut } from "@/lib/auth/auth";
 import Image from "next/image";
-import { SignOut } from "./auth-components";
+import { User } from "@/prisma/app/generated/prisma/client";
 
 // Menu items.
-const items = [
+const items = (accountId: string) => [
   {
     title: "Home",
-    url: "#",
+    url: `/${accountId}/dashboard`,
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
+    title: "Leads",
+    url: `/${accountId}/dashboard/leads`,
     icon: Inbox,
   },
   {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
     title: "Settings",
-    url: "#",
+    url: `/${accountId}/dashboard/settings`,
     icon: Settings,
   },
 ];
 
-export async function AppSidebar() {
-  const session = await auth();
-  const user = session?.user;
+export async function AppSidebar({ user }: { user: User }) {
   return (
     <Sidebar>
       <SidebarContent>
@@ -68,7 +56,7 @@ export async function AppSidebar() {
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {items(user?.companyId!).map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
@@ -113,8 +101,13 @@ export async function AppSidebar() {
                 <DropdownMenuItem>
                   <span>Billing</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <SignOut />
+                <DropdownMenuItem
+                  onClick={async () => {
+                    "use server";
+                    await signOut();
+                  }}
+                >
+                  Sign out
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
