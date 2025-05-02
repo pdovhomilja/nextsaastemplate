@@ -6,7 +6,7 @@ export const ErrorCard = () => {
   return (
     <CardWrapper
       headerLabel="Oops! Něco se muselo pokazit!"
-      backButtonHref="/auth/login"
+      backButtonHref="/login"
       backButtonLabel="Back to login"
     >
       <div className="w-full flex justify-center items-center">

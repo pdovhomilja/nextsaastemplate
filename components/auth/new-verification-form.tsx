@@ -43,7 +43,7 @@ export const NewVerificationForm = () => {
     <CardWrapper
       headerLabel="Potvrďte Váš email"
       backButtonLabel="Zpět na přihlášení"
-      backButtonHref="/auth/login"
+      backButtonHref="/login"
     >
       <div className="flex items-center w-full justify-center">
         {!success && !error && <BeatLoader />}

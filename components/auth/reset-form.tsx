@@ -50,7 +50,7 @@ export const ResetForm = () => {
     <CardWrapper
       headerLabel="Zapoměli jste heslo?"
       backButtonLabel="Zpět na přihlášení"
-      backButtonHref="/auth/login"
+      backButtonHref="/login"
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
