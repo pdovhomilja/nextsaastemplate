@@ -1,10 +1,12 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 import { auth } from "@/lib/auth/auth";
 import { redirect } from "@/i18n/navigation";
-import { db } from "@/lib/db";
+
 import { getUserByEmail } from "@/actions/user";
+
+import { UserStatus } from "@/prisma-client/app/generated/prisma/client";
 
 const AppLayout = async ({
   children,
@@ -22,7 +24,17 @@ const AppLayout = async ({
 
   const user = await getUserByEmail(session?.user?.email!);
 
-  console.log("AccountId", user?.companyId);
+  if (!user) {
+    redirect({ href: "/login", locale: locale });
+  }
+
+  if (user?.status === UserStatus.PENDING) {
+    redirect({ href: "/pending", locale: locale });
+  }
+
+  if (user?.status === UserStatus.BLOCKED) {
+    redirect({ href: "/blocked", locale: locale });
+  }
 
   return (
     <SidebarProvider>

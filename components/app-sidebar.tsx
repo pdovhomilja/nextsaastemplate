@@ -25,7 +25,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { auth, signOut } from "@/lib/auth/auth";
+import { signOut } from "@/lib/auth/auth";
 import Image from "next/image";
 import { User } from "@/prisma-client/app/generated/prisma/client";
 
@@ -40,6 +40,11 @@ const items = (accountId: string) => [
     title: "Leads",
     url: `/${accountId}/dashboard/leads`,
     icon: Inbox,
+  },
+  {
+    title: "Users",
+    url: `/${accountId}/dashboard/users`,
+    icon: User2,
   },
   {
     title: "Settings",
