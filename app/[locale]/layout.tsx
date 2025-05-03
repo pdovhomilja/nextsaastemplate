@@ -1,12 +1,19 @@
 import { Inter } from "next/font/google";
 import "../globals.css";
 
+//Theme provider
 import { ThemeProvider } from "@/providers/theme-provider";
+
+//PostHog provider
 import { PHProvider } from "@/providers/posthog";
 
+//i18n - via next-intl
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+
+//Toast notification
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +43,7 @@ export default async function LocaleLayout({
             <NextIntlClientProvider>{children}</NextIntlClientProvider>
           </ThemeProvider>
         </PHProvider>
+        <Toaster />
       </body>
     </html>
   );
